@@ -1,0 +1,11 @@
+<h1>Text Area Component</h1>
+<div data-sly-use.logic="logic.js">
+    <div data-sly-test="${wcmmode.edit || wcmmode.preview}">
+	<!-- Render HTML file in EDIT and PREVIEW mode-->
+    	<section data-sly-include="text.html"></section> 
+    </div>
+    <div data-sly-test="${!wcmmode.edit && !wcmmode.preview}">
+	<!-- Render by Angular 2 component in wcmmode=DISABLED mode-->
+    	<text-area text="${properties.text}"></text-area>
+    </div>
+</div>

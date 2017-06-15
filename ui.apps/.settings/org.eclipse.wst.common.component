@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ng2-aem-sample.ui.apps">
+        <wb-resource deploy-path="/" source-path="/src/main/content/jcr_root" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/content/META-INF"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <property name="context-root" value="/"/>
+        <property name="java-output-path" value="/ng2-aem-sample.ui.apps/target/classes"/>
+    </wb-module>
+</project-modules>

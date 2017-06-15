@@ -1,0 +1,6 @@
+.idea
+build
+node_modules
+typings
+.DS_Store
+target
