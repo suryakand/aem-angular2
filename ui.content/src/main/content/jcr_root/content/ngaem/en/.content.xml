@@ -2,8 +2,11 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2017-06-12T16:24:07.414-07:00"
+        cq:contextHubPath="/etc/cloudsettings/default/contexthub"
+        cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
+        cq:lastModified="{Date}2017-06-18T12:17:24.566-07:00"
         cq:lastModifiedBy="admin"
+        cq:tags="[aemsample:demopage,aemsample:angular-2,aemsample:neba-pages]"
         jcr:primaryType="nt:unstructured"
         jcr:title="English"
         sling:resourceType="ngaem/components/structure/page"

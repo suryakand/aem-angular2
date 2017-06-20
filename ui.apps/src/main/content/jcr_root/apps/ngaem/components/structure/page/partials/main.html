@@ -21,6 +21,32 @@
 
     <div class="page__title" data-sly-resource="${'title' @ decorationTagName='div'}"></div>
     
+	<sly data-sly-use.m="/apps/neba/neba.js">
+		<h2>Page title coming from Neba: ${m.pageTitle}</h2>
+
+		<h2> Current Page Information: ${currentPage.name}</h2>
+
+		<h2> Current Page Tags (using Neba)</h2>
+		<ul data-sly-list.t="${m.tags}" data-sly-unwrap>
+		  <li>Tag: ${t}</li>
+		</ul>  
+
+		<h2> Current Page Tags (using Sling Current Page)</h2>
+		<ul data-sly-list.t="${currentPage.tags}" data-sly-unwrap>
+		  <li>Tag: ${t.name}</li>
+		</ul>            
+
+           <h2> Child Pages</h2>
+		<ul data-sly-list.p="${m.childPages}" data-sly-unwrap>
+		  <li>Child Page: ${p.name}</li>
+		</ul>
+
+           <h2> Child Resources/Nodes</h2>
+		<ul data-sly-list.c="${m.children}" data-sly-unwrap>
+		  <li>Child Resource: ${c.name}</li>
+		</ul>            
+	</sly>
+		    
     <div class="page__par" data-sly-resource="par"></div>
 
     <footer class="page__footer">
