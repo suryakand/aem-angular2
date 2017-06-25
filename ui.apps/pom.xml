@@ -29,6 +29,17 @@
 	<name>ng2-aem - UI apps</name>
 	<description>UI apps package for ng2-aem</description>
 
+	<properties>
+		<destination>ngaem</destination>
+		<dependency-includeGroupIds>
+			io.wcm
+		</dependency-includeGroupIds>
+		<dependency-includeArtifactIds>
+			org.apache.servicemix.bundles.solr-solrj,
+			org.apache.servicemix.bundles.noggit
+		</dependency-includeArtifactIds>
+	</properties>
+
 	<!-- <scm> <connection></connection> <developerConnection></developerConnection> 
 		<url></url> <tag>HEAD</tag> </scm -->
 
@@ -62,11 +73,42 @@
 			</resource>
 		</resources>
 		<plugins>
-
+			<!-- copy the application's dependencies -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies-by-groupid</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputAbsoluteArtifactFilename>true</outputAbsoluteArtifactFilename>
+							<includeGroupIds>${dependency-includeGroupIds}</includeGroupIds>
+							<outputDirectory>${project.build.directory}/vault-work/jcr_root/apps/${destination}/install</outputDirectory>
+							<includeScope>compile</includeScope>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-dependencies-by-artifactid</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputAbsoluteArtifactFilename>true</outputAbsoluteArtifactFilename>
+							<includeArtifactIds>${dependency-includeArtifactIds}</includeArtifactIds>
+							<outputDirectory>${project.build.directory}/vault-work/jcr_root/apps/${destination}/install</outputDirectory>
+							<includeScope>compile</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
 				<configuration>
 					<failOnError>false</failOnError>
 					<filesets>
@@ -220,6 +262,10 @@
 	<!-- D E P E N D E N C I E S -->
 	<!-- ====================================================================== -->
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.noggit</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.suryakand.aem</groupId>
 			<artifactId>ng2-aem-sample.core</artifactId>
