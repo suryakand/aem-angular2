@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for..." [(ngModel)]="queryString">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button" (click)="search(0)">Go!</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-lg-12" *ngIf="searchResults" >
+        <br>
+        <p><b>Result: Found {{searchResults.numberOfResults}} result in {{searchResults.elapsedTime}}</b></p>
+        <div *ngFor="let result of searchResults.searchResults; let i = index">
+            <a [href]="result.link">{{result.title}}</a>
+            <p [innerHTML]="result.highlighting"></p>
+        </div>
+
+        <nav>
+          <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled': searchResults.currentPage <=0}"><a class="page-link" (click)="search(searchResults.currentPage - 1)">Previous</a></li>
+            <li class="page-item" *ngFor="let pageNumber of [0,1,2,3,4,5,6,7];"><a class="page-link" (click)="search(pageNumber)">{{pageNumber + 1}}</a></li>
+            <li class="page-item" [ngClass]="{'disabled': searchResults.currentPage >= (searchResults.numberPages - 1)}"><a class="page-link" (click)="search(searchResults.currentPage + 1)">Next</a></li>
+          </ul>
+        </nav>        
+	</div>
+</div>

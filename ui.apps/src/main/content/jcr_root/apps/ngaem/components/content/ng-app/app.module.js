@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "./app.component", "../task-list/task-list.component", "../about/about.component", "../task/task.component", "../text-area/text-area.component", "./app.routing", "@angular/forms"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./app.component", "../task-list/task-list.component", "../about/about.component", "../task/task.component", "../text-area/text-area.component", "../ng-search/search.component", "./app.routing", "@angular/forms"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.component"
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, platform_browser_1, app_component_1, task_list_component_1, about_component_1, task_component_1, text_area_component_1, app_routing_1, forms_1, AppModule;
+    var core_1, platform_browser_1, http_1, app_component_1, task_list_component_1, about_component_1, task_component_1, text_area_component_1, search_component_1, app_routing_1, forms_1, AppModule;
     return {
         setters: [
             function (core_1_1) {
@@ -15,6 +15,9 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.component"
             },
             function (platform_browser_1_1) {
                 platform_browser_1 = platform_browser_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             },
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
@@ -30,6 +33,9 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.component"
             },
             function (text_area_component_1_1) {
                 text_area_component_1 = text_area_component_1_1;
+            },
+            function (search_component_1_1) {
+                search_component_1 = search_component_1_1;
             },
             function (app_routing_1_1) {
                 app_routing_1 = app_routing_1_1;
@@ -50,6 +56,7 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.component"
                     imports: [
                         platform_browser_1.BrowserModule,
                         forms_1.FormsModule,
+                        http_1.HttpModule,
                         app_routing_1.routing
                     ],
                     declarations: [
@@ -57,9 +64,10 @@ System.register(["@angular/core", "@angular/platform-browser", "./app.component"
                         task_component_1.TaskComponent,
                         task_list_component_1.TaskListComponent,
                         about_component_1.AboutComponent,
-                        text_area_component_1.TextAreaComponent
+                        text_area_component_1.TextAreaComponent,
+                        search_component_1.SearchComponent
                     ],
-                    entryComponents: [app_component_1.AppComponent, text_area_component_1.TextAreaComponent],
+                    entryComponents: [app_component_1.AppComponent, text_area_component_1.TextAreaComponent, search_component_1.SearchComponent],
                     providers: [
                         app_routing_1.appRoutingProviders
                     ],
