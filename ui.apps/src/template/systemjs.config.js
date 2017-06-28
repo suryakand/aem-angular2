@@ -17,6 +17,7 @@
             '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            'ng2-completer': 'npm:ng2-completer/ng2-completer.umd.js',
             // other libraries
             'rxjs': 'npm:rxjs'
         },

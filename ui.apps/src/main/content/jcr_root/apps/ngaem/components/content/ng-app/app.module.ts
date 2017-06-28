@@ -8,7 +8,7 @@ import {AboutComponent} from "../about/about.component";
 import {TaskComponent} from "../task/task.component";
 import {TextAreaComponent} from "../text-area/text-area.component";
 import {SearchComponent} from "../ng-search/search.component";
-
+import { Ng2CompleterModule } from "ng2-completer";
 
 import {routing, appRoutingProviders} from './app.routing';
 import {FormsModule} from "@angular/forms";
@@ -18,7 +18,8 @@ import {FormsModule} from "@angular/forms";
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        Ng2CompleterModule
     ],
     declarations: [
         AppComponent,

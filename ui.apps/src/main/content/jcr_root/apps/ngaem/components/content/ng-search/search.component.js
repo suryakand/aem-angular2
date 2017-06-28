@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/http", "rxjs/add/operator/catch", "rxjs/add/operator/map"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/http", "rxjs/add/operator/catch", "rxjs/add/operator/map", "ng2-completer", "./SearchSuggestions"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/catch", "r
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, http_1, SearchComponent;
+    var core_1, http_1, ng2_completer_1, SearchSuggestions_1, SearchComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -22,14 +22,23 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/catch", "r
             function (_1) {
             },
             function (_2) {
+            },
+            function (ng2_completer_1_1) {
+                ng2_completer_1 = ng2_completer_1_1;
+            },
+            function (SearchSuggestions_1_1) {
+                SearchSuggestions_1 = SearchSuggestions_1_1;
             }
         ],
         execute: function () {
             SearchComponent = (function () {
-                function SearchComponent(elementRef, http) {
+                function SearchComponent(elementRef, http, completerService) {
                     this.elementRef = elementRef;
                     this.http = http;
+                    this.completerService = completerService;
                     this.text = elementRef.nativeElement.getAttribute('text');
+                    var ci = this;
+                    ci.dataRemote = new SearchSuggestions_1.CustomData(http);
                 }
                 SearchComponent.prototype.ngOnInit = function () {
                     console.log("TextAreaComponent initialized");
@@ -52,7 +61,7 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/catch", "r
                     selector: 'search',
                     templateUrl: '/bin/ngtemplate?path=/apps/ngaem/components/content/ng-search/search.html'
                 }),
-                __metadata("design:paramtypes", [core_1.ElementRef, http_1.Http])
+                __metadata("design:paramtypes", [core_1.ElementRef, http_1.Http, ng2_completer_1.CompleterService])
             ], SearchComponent);
             exports_1("SearchComponent", SearchComponent);
         }

@@ -6,7 +6,8 @@ import { Http, Response }   from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-
+import { CompleterService, CompleterData } from 'ng2-completer';
+import {CustomData} from './SearchSuggestions';
 
 @Component({
     selector: 'search',
@@ -20,9 +21,13 @@ export class SearchComponent implements OnInit {
     numberPages:Number;
     currentPage:Number;
     searchResults: any;
+    suggestion: any;
+    dataRemote: CompleterData;
 
-    constructor(private elementRef: ElementRef, private http: Http) {
+    constructor(private elementRef: ElementRef, private http: Http, public completerService: CompleterService) {
         this.text = elementRef.nativeElement.getAttribute('text');
+        let ci = this;
+        ci.dataRemote = new CustomData(http);
     }
 
     ngOnInit() {
@@ -40,4 +45,5 @@ export class SearchComponent implements OnInit {
             }
         });
     }
+
 }

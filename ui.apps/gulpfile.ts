@@ -34,7 +34,8 @@ return gulp.src([
         'reflect-metadata/Reflect.js',
         'rxjs/**/*.js',
         'zone.js/dist/**',
-        '@angular/**/bundles/**'
+        '@angular/**/bundles/**',
+        'ng2-completer/ng2-completer.umd.js'
     ], {cwd: "node_modules/**"}) /* Glob required here. */
     .pipe(gulp.dest(destination));    
 }
