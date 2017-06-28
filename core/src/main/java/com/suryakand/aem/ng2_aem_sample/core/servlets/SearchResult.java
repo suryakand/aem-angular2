@@ -125,7 +125,7 @@ public class SearchResult {
 		resultWithPagination.setNumberOfResults(getNumberResults());
 		resultWithPagination.setSearchResults(getSearchResults(linkHandler));
 		resultWithPagination.setCurrentPage(searchQuery.getStart() / SearchQuery.ROWS);
-		resultWithPagination.setNumberPages(groupCommand.getNGroups() / SearchQuery.ROWS);
+		resultWithPagination.setNumberPages(groupCommand.getNGroups() < SearchQuery.ROWS ? 1 : groupCommand.getNGroups() / SearchQuery.ROWS);
 
 		return resultWithPagination;
 	}
