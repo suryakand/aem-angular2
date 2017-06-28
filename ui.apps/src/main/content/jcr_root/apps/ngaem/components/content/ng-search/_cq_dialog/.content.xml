@@ -14,11 +14,27 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-                    <text
+                    <goBtnLabel
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/foundation/form/textfield"
-                        fieldLabel="Text"
-                        name="./text"/>
+                        fieldLabel="Go button label"
+                        name="./goBtnLabel"/>
+                    <searchPlaceHolder
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                        fieldLabel="Search filed placeholder"
+                        name="./searchPlaceHolder"/>
+                    <previousBtnLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                        fieldLabel="Previous button label"
+                        name="./previousBtnLabel"/>
+
+                    <nextBtnLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/textfield"
+                        fieldLabel="Next button label"
+                        name="./nextBtnLabel"/>
                 </items>
             </column>
         </items>

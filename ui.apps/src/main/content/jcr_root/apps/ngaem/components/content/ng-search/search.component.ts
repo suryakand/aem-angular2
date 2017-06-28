@@ -14,7 +14,10 @@ import {CustomData} from './SearchSuggestions';
     templateUrl: '/apps/ngaem/components/content/ng-search/search.html'
 })
 export class SearchComponent implements OnInit {
-    text;
+    goBtnLabel:String = "Go";
+    searchPlaceHolder:String = "Search Content";
+    previousBtnLabel:String = "Previous";
+    nextBtnLabel:String = "Next";
     queryString:String;
     numberOfResults:Number;
     elapsedTime:Number;
@@ -25,13 +28,25 @@ export class SearchComponent implements OnInit {
     dataRemote: CompleterData;
 
     constructor(private elementRef: ElementRef, private http: Http, public completerService: CompleterService) {
-        this.text = elementRef.nativeElement.getAttribute('text');
         let ci = this;
+        ci.goBtnLabel = ci.getProperty('goBtnLabel');
+        ci.searchPlaceHolder = ci.getProperty('searchPlaceHolder');
+        ci.previousBtnLabel = ci.getProperty('previousBtnLabel');
+        ci.nextBtnLabel = ci.getProperty('nextBtnLabel');
         ci.dataRemote = new CustomData(http);
     }
 
     ngOnInit() {
         console.log("TextAreaComponent initialized");
+    }
+
+    private getProperty(propertyName:String) {
+        let ci = this;
+        if (propertyName && ci.elementRef.nativeElement.getAttribute(propertyName)) {
+            return ci.elementRef.nativeElement.getAttribute(propertyName);
+        } else {
+            return ci[`${propertyName}`];
+        }
     }
 
     search(pageNumber:number) {

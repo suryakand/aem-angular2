@@ -36,12 +36,28 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/catch", "r
                     this.elementRef = elementRef;
                     this.http = http;
                     this.completerService = completerService;
-                    this.text = elementRef.nativeElement.getAttribute('text');
+                    this.goBtnLabel = "Go";
+                    this.searchPlaceHolder = "Search Content";
+                    this.previousBtnLabel = "Previous";
+                    this.nextBtnLabel = "Next";
                     var ci = this;
+                    ci.goBtnLabel = ci.getProperty('goBtnLabel');
+                    ci.searchPlaceHolder = ci.getProperty('searchPlaceHolder');
+                    ci.previousBtnLabel = ci.getProperty('previousBtnLabel');
+                    ci.nextBtnLabel = ci.getProperty('nextBtnLabel');
                     ci.dataRemote = new SearchSuggestions_1.CustomData(http);
                 }
                 SearchComponent.prototype.ngOnInit = function () {
                     console.log("TextAreaComponent initialized");
+                };
+                SearchComponent.prototype.getProperty = function (propertyName) {
+                    var ci = this;
+                    if (propertyName && ci.elementRef.nativeElement.getAttribute(propertyName)) {
+                        return ci.elementRef.nativeElement.getAttribute(propertyName);
+                    }
+                    else {
+                        return ci["" + propertyName];
+                    }
                 };
                 SearchComponent.prototype.search = function (pageNumber) {
                     var ci = this;

@@ -1,19 +1,11 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="input-group">
-                <ng2-completer class="completer-limit"
-                                             [(ngModel)]="queryString"
-                                             [dataService]="dataRemote"
-                                             [minSearchLength]="0"
-                                             [maxChars]="10"
-                                             [inputClass]="'form-control'"
-                                             [placeholder]="'Search content'"
-                                             [matchClass]="'match'"
-                                             [autofocus]="true"
-                                             [textSearching]="false">
+                <ng2-completer class="completer-limit" (ngModel)]="queryString" [dataService]="dataRemote"
+                    [minSearchLength]="0" [maxChars]="10" [inputClass]="'form-control'" [placeholder]="searchPlaceHolder" [matchClass]="'match'" [autofocus]="true" [textSearching]="false">
                 </ng2-completer>
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" (click)="search(0)">Go!</button>
+                    <button class="btn btn-secondary" type="button" (click)="search(0)">{{goBtnLabel}}</button>
                 </span>
         </div>
     </div>
@@ -28,9 +20,9 @@
 
         <nav>
           <ul class="pagination">
-            <li class="page-item" [ngClass]="{'disabled': searchResults.currentPage <=0}"><a class="page-link" (click)="search(searchResults.currentPage - 1)">Previous</a></li>
+            <li class="page-item" [ngClass]="{'disabled': searchResults.currentPage <= 0}"><a class="page-link" (click)="search(searchResults.currentPage - 1)">{{previousBtnLabel}}</a></li>
             <li class="page-item" *ngFor="let pageNumber of searchResults.pages;"><a class="page-link" (click)="search(pageNumber)">{{pageNumber + 1}}</a></li>
-            <li class="page-item" [ngClass]="{'disabled': searchResults.currentPage >= (searchResults.numberPages - 1)}"><a class="page-link" (click)="search(searchResults.currentPage + 1)">Next</a></li>
+            <li class="page-item" [ngClass]="{'disabled': searchResults.currentPage >= (searchResults.numberPages - 1)}"><a class="page-link" (click)="search(searchResults.currentPage + 1)">{{nextBtnLabel}}</a></li>
           </ul>
         </nav>
     </div>

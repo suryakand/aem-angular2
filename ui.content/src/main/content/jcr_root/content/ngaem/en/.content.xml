@@ -4,7 +4,7 @@
     <jcr:content
         cq:contextHubPath="/etc/cloudsettings/default/contexthub"
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
-        cq:lastModified="{Date}2017-06-18T12:17:24.566-07:00"
+        cq:lastModified="{Date}2017-06-28T13:57:25.804-07:00"
         cq:lastModifiedBy="admin"
         cq:tags="[aemsample:demopage,aemsample:angular-2,aemsample:neba-pages]"
         jcr:primaryType="nt:unstructured"
@@ -23,6 +23,15 @@
         <par
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/parsys">
+            <ng_search
+                jcr:created="{Date}2017-06-28T13:37:29.806-07:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2017-06-28T13:57:25.799-07:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="ngaem/components/content/ng-search"
+                goBtnLabel="Search"
+                searchPlaceHolder="Search content here..."/>
             <title_0
                 jcr:primaryType="nt:unstructured"
                 jcr:title="Service Component"
