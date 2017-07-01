@@ -8,6 +8,8 @@ import {AboutComponent} from "../about/about.component";
 import {TaskComponent} from "../task/task.component";
 import {TextAreaComponent} from "../text-area/text-area.component";
 import {SearchComponent} from "../ng-search/search.component";
+import {IpLocationComponent} from "../ip-location/ip-location.component";
+
 import { Ng2CompleterModule } from "ng2-completer";
 
 import {routing, appRoutingProviders} from './app.routing';
@@ -27,9 +29,10 @@ import {FormsModule} from "@angular/forms";
         TaskListComponent,
         AboutComponent,
         TextAreaComponent,
-        SearchComponent
+        SearchComponent,
+        IpLocationComponent
     ],
-    entryComponents: [AppComponent, TextAreaComponent, SearchComponent],
+    entryComponents: [AppComponent, TextAreaComponent, SearchComponent, IpLocationComponent],
     providers: [
         appRoutingProviders
     ],

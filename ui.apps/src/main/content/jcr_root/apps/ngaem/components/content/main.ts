@@ -10,6 +10,7 @@ import {AboutComponent} from "./about/about.component";
 import {TaskComponent} from "./task/task.component";
 import {TextAreaComponent} from "./text-area/text-area.component";
 import {SearchComponent} from "./ng-search/search.component";
+import {IpLocationComponent} from "./ip-location/ip-location.component";
 /**
  * Make sure that this list is updated as and when a new Angular2 component in added to NgModule's entryComponents attribute.
  */
@@ -18,7 +19,8 @@ const componentList = {
     'task-list': TaskListComponent,
     'about': AboutComponent,
     'task': TaskListComponent,
-    'search': SearchComponent
+    'search': SearchComponent,
+    'ip-location': IpLocationComponent
 };
 
 /**

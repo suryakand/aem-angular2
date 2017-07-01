@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./app.component", "../task-list/task-list.component", "../about/about.component", "../task/task.component", "../text-area/text-area.component", "../ng-search/search.component", "ng2-completer", "./app.routing", "@angular/forms"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "./app.component", "../task-list/task-list.component", "../about/about.component", "../task/task.component", "../text-area/text-area.component", "../ng-search/search.component", "../ip-location/ip-location.component", "ng2-completer", "./app.routing", "@angular/forms"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, platform_browser_1, http_1, app_component_1, task_list_component_1, about_component_1, task_component_1, text_area_component_1, search_component_1, ng2_completer_1, app_routing_1, forms_1, AppModule;
+    var core_1, platform_browser_1, http_1, app_component_1, task_list_component_1, about_component_1, task_component_1, text_area_component_1, search_component_1, ip_location_component_1, ng2_completer_1, app_routing_1, forms_1, AppModule;
     return {
         setters: [
             function (core_1_1) {
@@ -36,6 +36,9 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
             },
             function (search_component_1_1) {
                 search_component_1 = search_component_1_1;
+            },
+            function (ip_location_component_1_1) {
+                ip_location_component_1 = ip_location_component_1_1;
             },
             function (ng2_completer_1_1) {
                 ng2_completer_1 = ng2_completer_1_1;
@@ -69,9 +72,10 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
                         task_list_component_1.TaskListComponent,
                         about_component_1.AboutComponent,
                         text_area_component_1.TextAreaComponent,
-                        search_component_1.SearchComponent
+                        search_component_1.SearchComponent,
+                        ip_location_component_1.IpLocationComponent
                     ],
-                    entryComponents: [app_component_1.AppComponent, text_area_component_1.TextAreaComponent, search_component_1.SearchComponent],
+                    entryComponents: [app_component_1.AppComponent, text_area_component_1.TextAreaComponent, search_component_1.SearchComponent, ip_location_component_1.IpLocationComponent],
                     providers: [
                         app_routing_1.appRoutingProviders
                     ],

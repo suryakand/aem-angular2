@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter IP Address" [(ngModel)]="queryString">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" (click)="search()">{{goBtnLabel}}</button>
+                </span>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row" *ngIf="searchResult">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">{{localtionLabel}}</h3>
+        <p class="card-text">Country Code: {{searchResult.country_code}}</p>
+        <p class="card-text">Country Name: {{searchResult.country_name}}</p>
+        <p class="card-text">Region: {{searchResult.region_code}}</p>
+        <p class="card-text">Region Name: {{searchResult.region_name}}</p>
+        <p class="card-text">City: {{searchResult.city}}</p>
+        <p class="card-text">Zip Code: {{searchResult.zip_code}}</p>
+        <p class="card-text">Timezone: {{searchResult.time_zone}}</p>
+        <p class="card-text">Latitude: {{searchResult.latitude}}</p>
+        <p class="card-text">Longitude: {{searchResult.longitude}}</p>
+        <p class="card-text">Metro Code: {{searchResult.metro_code}}</p>
+      </div>
+    </div>
+  </div>
+</div>
