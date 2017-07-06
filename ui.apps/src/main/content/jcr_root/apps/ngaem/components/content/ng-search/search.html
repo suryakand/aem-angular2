@@ -21,6 +21,10 @@
     <div class="col-lg-12" *ngIf="searchResults" >
         <br>
         <p><b>Result: Found {{searchResults.numberOfResults}} result in {{searchResults.elapsedTime}}</b></p>
+        <p *ngIf="searchResults.spellcheckSuggestion">
+            Your searched for <b>{{searchResults.spellcheckSuggestion.queryTerm}}</b>, Suggested term(s): 
+            <span *ngFor="let s of searchResults.spellcheckSuggestion.alternatives; let i = index"><b>{{s}}</b></span>
+		</p>
         <div *ngFor="let result of searchResults.searchResults; let i = index">
             <a [href]="result.link">{{result.title}}</a>
             <p [innerHTML]="result.highlighting"></p>

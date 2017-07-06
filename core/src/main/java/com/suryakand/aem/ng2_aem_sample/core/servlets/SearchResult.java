@@ -44,7 +44,6 @@ public class SearchResult {
 
 	private QueryResponse response;
 	private List<SearchResultEntry> searchResults;
-	private SpellcheckSuggestion spellcheckSuggestion;
 	private GroupCommand groupCommand;
 
 	@Inject
@@ -89,15 +88,16 @@ public class SearchResult {
 	/**
 	 * @return link to this page using an alternative search term.
 	 */
-	public SpellcheckSuggestion getSpellcheckSuggestion(Page currentPage, LinkHandler linkHandler) {
+	public SpellcheckSuggestion getSpellcheckSuggestion(LinkHandler linkHandler) {
+		SpellcheckSuggestion spellcheckSuggestion = null;
 		if (spellcheckSuggestion == null && response != null) {
 			SpellCheckResponse spellcheck = response.getSpellCheckResponse();
-			if (spellcheck != null && !spellcheck.getCollatedResults().isEmpty()) {
-				SpellCheckResponse.Collation collation = spellcheck.getCollatedResults().get(0);
-				Link link = searchQueryLinkHandler.get(currentPage, linkHandler).param(SearchQuery.SEARCH_QUERY_PARAMETER, collation.getCollationQueryString()).build();
-				spellcheckSuggestion = new SpellcheckSuggestion(collation.getCollationQueryString(), collation.getNumberOfHits(), link);
+			if (spellcheck != null && !spellcheck.getSuggestions().isEmpty()) {
+				SpellCheckResponse.Suggestion collation = spellcheck.getSuggestions().get(0);
+				spellcheckSuggestion = new SpellcheckSuggestion(collation.getToken(), collation.getNumFound(), collation.getAlternatives());
 			}
 		}
+		
 		return spellcheckSuggestion;
 	}
 
@@ -126,7 +126,7 @@ public class SearchResult {
 		resultWithPagination.setSearchResults(getSearchResults(linkHandler));
 		resultWithPagination.setCurrentPage(searchQuery.getStart() / SearchQuery.ROWS);
 		resultWithPagination.setNumberPages(groupCommand.getNGroups() < SearchQuery.ROWS ? 1 : groupCommand.getNGroups() / SearchQuery.ROWS);
-
+		resultWithPagination.setSpellcheckSuggestion(getSpellcheckSuggestion(linkHandler));
 		return resultWithPagination;
 	}
 
@@ -237,21 +237,17 @@ public class SearchResult {
 
 	public static final class SpellcheckSuggestion {
 		private final String queryTerm;
-		private final Link link;
 		private final long numberOfHits;
+		private final List<String> alternatives;
 
-		public SpellcheckSuggestion(String queryTerm, long numberOfHits, Link link) {
+		public SpellcheckSuggestion(String queryTerm, long numberOfHits, List<String> alternatives) {
 			this.queryTerm = queryTerm;
-			this.link = link;
 			this.numberOfHits = numberOfHits;
+			this.alternatives = alternatives;
 		}
 
 		public String getQueryTerm() {
 			return queryTerm;
-		}
-
-		public Link getLink() {
-			return link;
 		}
 
 		public long getNumberOfHits() {
@@ -292,6 +288,7 @@ public class SearchResult {
 		private int numberPages;
 		private int currentPage;
 		private String queryString;
+		private SpellcheckSuggestion spellcheckSuggestion;
 
 		public List<SearchResultEntry> getSearchResults() {
 			return searchResults;
@@ -328,6 +325,12 @@ public class SearchResult {
 		}
 		public void setQueryString(String searchTerm) {
 			this.queryString = searchTerm;
+		}
+		public SpellcheckSuggestion getSpellcheckSuggestion() {
+			return spellcheckSuggestion;
+		}
+		public void setSpellcheckSuggestion(SpellcheckSuggestion spellcheckSuggestion) {
+			this.spellcheckSuggestion = spellcheckSuggestion;
 		}
 	}
 }

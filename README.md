@@ -52,3 +52,5 @@ There are three levels of testing contained in the project:
 The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
 
     http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
+## Sample Suggestion Solr Query
+http://localhost:8983/solr/oak/spell?df=text&spellcheck.q=sumer&spellcheck=true&spellcheck.collateParam.q.op=AND&wt=json
