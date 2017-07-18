@@ -1,3 +1,9 @@
+# Tutorials
+Please refer following blog post for details explanation and guidelines for integration
+* Part 1: http://suryakand-shinde.blogspot.com/2017/06/part-1-angular-2-with-aem-introduction.html
+* Part 2: http://suryakand-shinde.blogspot.com/2017/06/part-2-aem-with-angular-2-building.html
+* Part 3: http://suryakand-shinde.blogspot.com/2017/06/part-3-aem-with-angular-2-aem-component.html
+
 # Sample AEM project template
 
 This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
@@ -52,5 +58,4 @@ There are three levels of testing contained in the project:
 The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
 
     http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
-## Sample Suggestion Solr Query
-http://localhost:8983/solr/oak/spell?df=text&spellcheck.q=sumer&spellcheck=true&spellcheck.collateParam.q.op=AND&wt=json
+
