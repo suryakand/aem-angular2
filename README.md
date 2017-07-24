@@ -4,10 +4,6 @@ Please refer following blog post for details explanation and guidelines for inte
 * Part 2: http://suryakand-shinde.blogspot.com/2017/06/part-2-aem-with-angular-2-building.html
 * Part 3: http://suryakand-shinde.blogspot.com/2017/06/part-3-aem-with-angular-2-aem-component.html
 
-# Sample AEM project template
-
-This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
-
 ## Modules
 
 The main parts of the template are:
@@ -19,6 +15,15 @@ The main parts of the template are:
 * ui.launcher: contains glue code that deploys the ui.tests bundle (and dependent bundles) to the server and triggers the remote JUnit execution
 
 ## How to build
+To build this project, you will need:
+* Node.js - https://nodejs.org/en
+* Gulp - http://gulpjs.com
+* Maven - https://maven.apache.org
+* JDK 1.7 or later - https://www.java.com/en/download
+
+Before building the Maven project, the front-end project must be built.
+* cd into the ui.apps directory and run ``npm install``
+* run ``gulp build``
 
 To build all the modules run in the project root directory the following command with Maven 3:
 
