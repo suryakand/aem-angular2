@@ -186,11 +186,5 @@
 			<artifactId>ng2-aem-sample.core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.adobe.aem</groupId>
-			<artifactId>aem-api</artifactId>
-		</dependency>
-
 	</dependencies>
 </project>

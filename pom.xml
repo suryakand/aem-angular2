@@ -20,8 +20,6 @@
 		<module>core</module>
 		<module>ui.apps</module>
 		<module>ui.content</module>
-		<module>it.tests</module>
-		<module>it.launcher</module>
 	</modules>
 
 	<properties>
@@ -85,7 +83,7 @@
 									<version>[2.2.1,)</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
-									<message>Project must be compiled with Java 6 or higher</message>
+									<message>Project must be compiled with Java 7 or higher</message>
 									<version>1.7</version>
 								</requireJavaVersion>
 							</rules>
@@ -447,8 +445,9 @@
 			<!-- Apache Sling Dependencies -->
 			<dependency>
 				<groupId>com.adobe.aem</groupId>
-				<artifactId>aem-api</artifactId>
-				<version>6.0.0.1</version>
+				<artifactId>uber-jar</artifactId>
+				<version>6.3.0</version>
+				<classifier>apis</classifier>
 				<scope>provided</scope>
 			</dependency>
 
