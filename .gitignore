@@ -3,5 +3,7 @@ build
 node_modules
 typings
 .DS_Store
-target
+target/
 *.log
+.project
+.settings/
