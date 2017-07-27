@@ -20,6 +20,7 @@ To build this project, you will need:
 * Gulp - http://gulpjs.com
 * Maven - https://maven.apache.org
 * JDK 1.7 or later - https://www.java.com/en/download
+* Angular CLI - ``npm install -g @angular/cli``
 
 Before building the Maven project, the front-end project must be built.
 * cd into the ui.apps directory and run ``npm install``

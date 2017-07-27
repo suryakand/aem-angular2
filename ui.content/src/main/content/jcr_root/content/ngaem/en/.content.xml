@@ -6,7 +6,7 @@
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
         cq:lastModified="{Date}2017-06-28T13:57:25.804-07:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[aemsample:demopage,aemsample:angular-2,aemsample:neba-pages]"
+        cq:tags="[aemsample:demopage,aemsample:angular-2]"
         jcr:primaryType="nt:unstructured"
         jcr:title="English"
         sling:resourceType="ngaem/components/structure/page"
