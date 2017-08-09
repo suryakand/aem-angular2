@@ -127,43 +127,6 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
-		<!-- Neba Dependencies -->
-		<dependency>
-			<groupId>org.eclipse.gemini.blueprint</groupId>
-			<artifactId>gemini-blueprint-extensions</artifactId>
-			<version>2.1.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>io.neba</groupId>
-			<artifactId>io.neba.neba-api</artifactId>
-			<version>4.2.0</version>
-		</dependency>
-
-		<!-- Spring Dependencies (required by Neba) -->
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context</artifactId>
-			<version>${spring.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-context-support</artifactId>
-			<version>${spring.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-web</artifactId>
-			<version>${spring.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.servicemix.bundles</groupId>
-			<artifactId>org.apache.servicemix.bundles.spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!-- OSGi Dependencies -->
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -206,7 +169,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.adobe.aem</groupId>
-			<artifactId>aem-api</artifactId>
+			<artifactId>uber-jar</artifactId>
+			<classifier>apis</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.sling</groupId>
