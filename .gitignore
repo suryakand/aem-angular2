@@ -4,3 +4,6 @@ node_modules
 typings
 .DS_Store
 target
+**/coverage/**
+npm-debug.log
+**/*.map
