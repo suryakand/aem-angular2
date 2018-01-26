@@ -43,65 +43,66 @@ return gulp.src([
 /**
  * Remove build directory.
  */
-gulp.task('clean', (cb) => {
+gulp.task('clean', gulp.series((cb) => {
     return del(["build"], cb);
-});
+}));
 
 
 /**
  * Lint all custom TypeScript files.
  */
-gulp.task('tslint', () => {
+gulp.task('tslint', gulp.series(() => {
     return gulp.src("src/**/*.ts")
         .pipe(tslint({
             formatter: 'prose'
         }))
         .pipe(tslint.report());
-});
+}));
 
 /**
  * Compile TypeScript sources and create sourcemaps in build directory.
  */
-gulp.task("compile", ["tslint"], () => {
+gulp.task("compile", gulp.series("tslint", () => {
     return compileTs("src/main/content/jcr_root/apps/ngaem/components/**/*.ts", 'build/app');
-});
+}));
 
 /**
  * Copy all resources that are not TypeScript files into build directory.
  */
-gulp.task("resources", ["resources:static"], (done) => {
-    gulp.src(["src/main/content/jcr_root/apps/ngaem/components/**/*", "!**/*.ts"])
-        .pipe(gulp.dest('build/app')).on('end', function () { done(); });;
-});
-
-gulp.task("resources:static", () => {
+gulp.task("resources:static", gulp.series(() => {
     return gulp.src(["src/template/index.html"])
         .pipe(gulp.dest('build'));
-});
+}));
+
+gulp.task("resources", gulp.series("resources:static", (done) => {
+    gulp.src(["src/main/content/jcr_root/apps/ngaem/components/**/*", "!**/*.ts"])
+        .pipe(gulp.dest('build/app')).on('end', function () { done(); });;
+}));
+
 
 /**
  * Copy all required libraries into build directory.
  */
 
-gulp.task("libs", () => {
+gulp.task("libs", gulp.series(() => {
     return buildLibs("build/lib");
-});
+}));
 
-gulp.task('system-config', () => {
+gulp.task('system-config', gulp.series(() => {
   return gulp.src(['src/template/systemjs.config.js'])
     .pipe(replace('${DESIGN_PATH}', 'lib/'))
     .pipe(replace('${APP_PATH}', 'app/content'))
     .pipe(gulp.dest('build'));
-});
+}));
 
-gulp.task('update-template-path', ['compile', 'resources'], () => {
+gulp.task('update-template-path', gulp.series('compile', 'resources', () => {
   return gulp.src(['build/app/content/**/*.component.js'])
     .pipe(replace('/apps/ngaem/components', '/app'))
     .pipe(gulp.dest('build/app/content'));
-});
+}));
 
-gulp.task('clean-generated-files', function (done) {
-    gulp.src([
+gulp.task('clean-generated-files', gulp.series(function () {
+    return gulp.src([
      'src/main/content/jcr_root/apps/ngaem/components/**/*.component.js', 
      'src/main/content/jcr_root/apps/ngaem/components/**/*.component.js.map',
      'src/main/content/jcr_root/apps/ngaem/components/**/app.module.js',
@@ -109,55 +110,59 @@ gulp.task('clean-generated-files', function (done) {
      'src/main/content/jcr_root/apps/ngaem/components/**/app.routing.js', 
      'src/main/content/jcr_root/apps/ngaem/components/**/app.routing.js.map',
      'src/main/content/jcr_root/apps/ngaem/components/content/main.js', 
-     'src/main/content/jcr_root/apps/ngaem/components/content/main.js.map'], 
-    {read: false}).pipe(clean({force: true})).on('end', function () { done(); });
-});
+     'src/main/content/jcr_root/apps/ngaem/components/content/main.js.map',
+     'src/main/content/jcr_root/apps/ngaem/components/ui.tests/**/*.spec.js', 
+    ], 
+    {read: false, allowEmpty: true}).pipe(clean({force: true}));
+}));
 
 /**
  * Build the project.
  */
-gulp.task("build", ['clean-generated-files', 'update-template-path', 'compile', 'resources', 'libs', 'system-config'], () => {
-    console.log("Building the project ...");
-});
+gulp.task("build", gulp.series('clean-generated-files', 'update-template-path', 'libs', 'system-config', (done) => {
+    console.log(" ****************** UI BUILD (ANGULAR) COMPETED ****************** ");
+    done();
+}));
 
 /**
  * AEM Build specific tasks (executed from maven)
  */
-gulp.task("libs:aem", () => {
+gulp.task("libs:aem", gulp.series(() => {
     return buildLibs("src/main/content/jcr_root/etc/designs/ngaem/lib/");
-}); 
+})); 
 
-gulp.task("resources:aem", () => {
+gulp.task("resources:aem", gulp.series(() => {
     return gulp.src(["src/app/**/*", "!**/*.ts"])
         .pipe(gulp.dest('src/main/content/jcr_root/etc/designs/ngaem/app'));
-});
+}));
 
-gulp.task("compile:aem", ["tslint"], () => {
+gulp.task("compile:aem", gulp.series("tslint", () => {
     return compileTs("src/main/content/jcr_root/apps/ngaem/components/**/*.ts",'src/main/content/jcr_root/apps/ngaem/components');
-});
+}));
 
-gulp.task('update-template-path:aem', ['compile:aem', 'resources:aem'], () => {
+gulp.task('update-template-path:aem', gulp.series('compile:aem', 'resources:aem', () => {
   return gulp.src(['src/main/content/jcr_root/apps/ngaem/components/**/*.component.js'])
     .pipe(replace('/apps/ngaem/components/content', '/bin/ngtemplate?path=/apps/ngaem/components/content'))
     .pipe(gulp.dest('src/main/content/jcr_root/apps/ngaem/components'));
-});
+}));
 
-gulp.task('system-config:aem', () => {
+gulp.task('system-config:aem', gulp.series(() => {
   return gulp.src(['src/template/systemjs.config.js'])
     .pipe(replace('${DESIGN_PATH}', '/etc/designs/ngaem/lib/'))
     .pipe(replace('${APP_PATH}', '/apps/ngaem/components/content'))
     .pipe(gulp.dest(appConfig.systemConfigTargetAem));
-});
+}));
 
-gulp.task("build:aem", ['clean-generated-files', 'update-template-path:aem', 'compile:aem', 'resources:aem', 'libs:aem', 'system-config:aem'], () => {
-    console.log("Building the project ...");
-});
+gulp.task("build:aem", gulp.series('clean-generated-files', 'update-template-path:aem', 'libs:aem', 'system-config:aem', (done) => {
+    console.log(" ****************** UI BUILD (AEM) COMPETED ****************** ");
+    done();
+}));
 
 
 /**
  * Watch for changes in TypeScript, HTML and CSS files.
  */
-gulp.task('watch', function () {
+gulp.task('watch', gulp.series(function () {
     gulp.watch(["src/**/*.ts"], ['compile']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
@@ -165,4 +170,4 @@ gulp.task('watch', function () {
     gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
-});
+}));
