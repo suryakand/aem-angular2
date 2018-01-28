@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { MockBackend } from "@angular/http/testing";
 import { Http, ConnectionBackend, BaseRequestOptions, XHRBackend, ResponseOptions, Response } from "@angular/http";
 
-export class CLTestBed {
+export class UtilTestBed {
     private climports:any = [];
     private cldeclarations:any = [];
     private clproviders:any = [];

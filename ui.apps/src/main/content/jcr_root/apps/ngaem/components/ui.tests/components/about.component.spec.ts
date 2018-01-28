@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 import {AboutComponent} from "../../content/about/about.component";
 import {TextAreaComponent} from "../../content/text-area/text-area.component";
 
-import { CLTestBed } from '../commons/testbed-init';
+import { UtilTestBed } from '../commons/testbed-init';
 
 export class MockElementRef extends ElementRef {}
 
@@ -16,7 +16,7 @@ describe("Validate AboutComponent", () => {
     describe("Is Redered with H1 title as About", () => {
 
         beforeEach(async(() => {
-            TestBed.configureTestingModule(new CLTestBed().getTestBed([AboutComponent, TextAreaComponent], { provide: ElementRef, useClass: MockElementRef })).compileComponents();
+            TestBed.configureTestingModule(new UtilTestBed().getTestBed([AboutComponent, TextAreaComponent], { provide: ElementRef, useClass: MockElementRef })).compileComponents();
         }));
 
         it('Render Component', inject([], fakeAsync(() => {
