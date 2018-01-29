@@ -3,6 +3,8 @@ Please refer following blog post for details explanation and guidelines for inte
 * Part 1: http://suryakand-shinde.blogspot.com/2017/06/part-1-angular-2-with-aem-introduction.html
 * Part 2: http://suryakand-shinde.blogspot.com/2017/06/part-2-aem-with-angular-2-building.html
 * Part 3: http://suryakand-shinde.blogspot.com/2017/06/part-3-aem-with-angular-2-aem-component.html
+* Part 4 (Angular Unit Testing): http://suryakand-shinde.blogspot.com/2018/01/part-4-aem-with-angular-2-unit-testing.html
+
 
 # Sample AEM project template
 
