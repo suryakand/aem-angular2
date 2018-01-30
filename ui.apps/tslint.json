@@ -11,7 +11,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      200
+      500
     ],
     "no-arg": true,
     "no-bitwise": true,
@@ -29,7 +29,6 @@
     "no-empty": false,
     "no-eval": true,
     "no-string-literal": false,
-    "no-trailing-whitespace": true,
     "no-use-before-declare": true,
     "one-line": [
       true,
