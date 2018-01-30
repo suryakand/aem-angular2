@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter IP Address" [(ngModel)]="queryString">
+                <input type="text" id="ipAddress" class="form-control" placeholder="Enter IP Address" [(ngModel)]="queryString">
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" (click)="search()">{{goBtnLabel}}</button>
+                    <button class="btn btn-secondary" id="searchBtn" type="button" (click)="search()">{{goBtnLabel}}</button>
                 </span>
         </div>
     </div>

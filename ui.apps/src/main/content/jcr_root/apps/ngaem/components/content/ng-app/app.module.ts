@@ -9,6 +9,7 @@ import {TaskComponent} from "../task/task.component";
 import {TextAreaComponent} from "../text-area/text-area.component";
 import {SearchComponent} from "../ng-search/search.component";
 import {IpLocationComponent} from "../ip-location/ip-location.component";
+import {LocationService} from '../services/location-service';
 
 import { Ng2CompleterModule } from "ng2-completer";
 
@@ -34,6 +35,7 @@ import {FormsModule} from "@angular/forms";
     ],
     entryComponents: [AppComponent, TextAreaComponent, SearchComponent, IpLocationComponent],
     providers: [
+        LocationService,
         appRoutingProviders
     ],
     bootstrap: [AppComponent]
