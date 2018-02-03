@@ -125,10 +125,27 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.5.0</version>
 				<executions>
+					<!-- Execute UI Build as part of standard Maven "generate-resource" 
+						phase -->
 					<execution>
-						<id>gulp-build</id>
+						<id>ui-npm-install</id>
+						<configuration>
+							<workingDirectory>.</workingDirectory>
+							<executable>npm</executable>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+						<phase>validate</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					<!-- Execute UI Build as part of standard Maven "generate-resource" 
+						phase -->
+					<execution>
+						<id>ui-aem-build</id>
 						<configuration>
 							<workingDirectory>.</workingDirectory>
 							<executable>npm</executable>
@@ -137,7 +154,24 @@
 								<argument>build:aem</argument>
 							</arguments>
 						</configuration>
-						<phase>generate-resources</phase>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					<!-- Execute UI Unit Tests as part of standard Maven "test" phase -->
+					<execution>
+						<id>ui-unit-tests</id>
+						<configuration>
+							<workingDirectory>.</workingDirectory>
+							<skip>${skipTests}</skip>
+							<executable>npm</executable>
+							<arguments>
+								<argument>run</argument>
+								<argument>test</argument>
+							</arguments>
+						</configuration>
+						<phase>test</phase>
 						<goals>
 							<goal>exec</goal>
 						</goals>
